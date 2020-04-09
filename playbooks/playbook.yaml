@@ -1,0 +1,20 @@
+---
+- name: My first playbook
+  hosts: all
+  become: true
+  become_method: sudo
+  tasks: 
+  - name: install package
+    package: 
+      name: httpd
+      state: installed
+    
+  - name: restart apache
+    package: 
+      name: httpd
+      state: latest
+
+  - name: add bob
+    user:
+      name: bob
+      state: present    
