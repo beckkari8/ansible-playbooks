@@ -1,0 +1,22 @@
+- name: Start instances
+  hosts: localhost
+  gather_facts: false
+  vars:
+    instance_ids:
+      - 'i-00476b4120c803fd5'
+      - 'c'
+      - 'i-066e3304d3246e050'
+      
+    region:
+     - 'us-east-1'
+     - 'us-west-2'
+     - 'eu-west-1'
+  tasks:
+    - name: Start instances
+      ec2:
+        instance_ids: '{{ instance_ids }}'
+        region: '{{ region }}'
+        state: stopped
+        wait: True
+        vpc_subnet_id: subnet-053fbc7822d68f7b5 subnet-051fe9935ce2da711 subnet-0a88ab271358aff61
+        assign_public_ip: yes
