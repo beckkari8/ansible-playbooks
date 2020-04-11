@@ -17,4 +17,4 @@
   - name: add bob
     user:
       name: bob
-      state: present    
+      state: present

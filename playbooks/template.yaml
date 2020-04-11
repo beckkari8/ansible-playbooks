@@ -1,0 +1,7 @@
+- name: My first playbook
+  hosts: all
+  become: true
+  become_method: sudo
+  user: centos
+  tasks: 
+  - name: install package
