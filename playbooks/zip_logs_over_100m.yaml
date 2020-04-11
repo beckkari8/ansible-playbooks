@@ -4,5 +4,9 @@
   become_method: sudo
   user: centos   
   tasks:
+<<<<<<< HEAD
   - name: run find command ans
+=======
+  - name: run find command
+>>>>>>> 0fdb13d5e629eb15af81d145538093f4ff5bf8f9
     shell: 'find   /var/log   -type f   -name   "*.log"   -size   +100M   -exec  gzip -v9  {} +'
