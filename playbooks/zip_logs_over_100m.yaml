@@ -5,4 +5,4 @@
   user: centos   
   tasks:
   - name: run find command
-    shell: 'sudo find /var/log -type f -name "*.log" -size +100M -exec gzip -v9   {}+'
+    shell: 'find /var/log -type f -name "*.log" -size +100M -exec gzip -v9   {}+'
