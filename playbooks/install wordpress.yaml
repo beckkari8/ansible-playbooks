@@ -5,7 +5,7 @@
   become: true
   become_method: sudo
   user: centos
-- name: install dependencies
+- name: install  dependencies
   package:
     name:
       - httpd 
