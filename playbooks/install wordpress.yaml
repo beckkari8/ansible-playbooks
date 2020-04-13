@@ -9,7 +9,7 @@
     - "ben"
     - "lisa"
     - "katty"
-    
+
   tasks: 
   - name: dependenices for wordpress
     package:
@@ -28,7 +28,6 @@
       state: present 
 
 
-
   # - name: install http
   #   package: 
   #     name: httpd
@@ -43,8 +42,3 @@
   #     package: 
   #       name: mariadb-server
   #       status: installed    
-
-           
-
- 
-
