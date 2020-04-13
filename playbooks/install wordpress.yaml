@@ -5,6 +5,7 @@
   become: true
   become_method: sudo
   user: centos
+  tasks:
   - name: install  dependencies
     package:
       name:
