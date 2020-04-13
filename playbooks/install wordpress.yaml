@@ -1,0 +1,39 @@
+- name: My first playbook
+  hosts: all
+  become: true
+  become_method: sudo
+  user: centos
+  vars:
+    users:
+    - "bob"
+    - "ben"
+    - "lisa"
+    - "katty"
+  tasks: 
+  - name: install php
+    package:
+      name: php
+      status: installed
+
+  - name: install http
+    package: 
+      name: httpd
+      state: installed
+
+  - name: install mariadb
+     package:
+       name: mysql
+       status: installed
+
+  - name: install mariadb-server
+      package: 
+        name: mariadb-server
+        status: installed    
+
+  - name: creating users
+    user:
+      name: "{{ item }}"" 
+      state: present            
+
+ 
+
