@@ -5,7 +5,7 @@
   become: true
   become_method: sudo
   user: centos
-    vars:
+  vars:
     users:
     - "bob"
     - "ben"
