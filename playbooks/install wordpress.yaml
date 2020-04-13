@@ -9,6 +9,7 @@
     - "ben"
     - "lisa"
     - "katty"
+    
   tasks: 
   - name: dependenices for wordpress
     package:
@@ -20,6 +21,13 @@
       status: installed
       state: started
       enabled: yes
+
+  - name: creating users
+    user:
+      name: "{{ item }}"" 
+      state: present 
+
+
 
   # - name: install http
   #   package: 
@@ -36,10 +44,7 @@
   #       name: mariadb-server
   #       status: installed    
 
-  - name: creating users
-    user:
-      name: "{{ item }}"" 
-      state: present            
+           
 
  
 
