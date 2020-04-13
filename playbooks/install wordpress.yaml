@@ -14,7 +14,7 @@
   tasks:
   - name: creating users
     user:
-      name: "{{ item }}"" 
+      name: "{{ item }}"
       state: present 
 
   - name: install  dependencies
