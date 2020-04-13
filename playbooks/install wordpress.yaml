@@ -10,10 +10,16 @@
     - "lisa"
     - "katty"
   tasks: 
-  - name: install php
+  - name: dependenices for wordpress
     package:
-      name: php
+      name: 
+      - php
+      - php-mysql
+      - mariadb-server
+      - mariadb
       status: installed
+      state: started
+      enabled: yes
 
   - name: install http
     package: 
