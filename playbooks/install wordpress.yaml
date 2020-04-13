@@ -21,20 +21,20 @@
       state: started
       enabled: yes
 
-  - name: install http
-    package: 
-      name: httpd
-      state: installed
+  # - name: install http
+  #   package: 
+  #     name: httpd
+  #     state: installed
 
-  - name: install mariadb
-     package:
-       name: mysql
-       status: installed
+  # - name: install mariadb
+  #    package:
+  #      name: mysql
+  #      status: installed
 
-  - name: install mariadb-server
-      package: 
-        name: mariadb-server
-        status: installed    
+  # - name: install mariadb-server
+  #     package: 
+  #       name: mariadb-server
+  #       status: installed    
 
   - name: creating users
     user:
