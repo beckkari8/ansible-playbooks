@@ -5,7 +5,18 @@
   become: true
   become_method: sudo
   user: centos
+    vars:
+    users:
+    - "bob"
+    - "ben"
+    - "lisa"
+    - "katty"
   tasks:
+  - name: creating users
+    user:
+      name: "{{ item }}"" 
+      state: present 
+
   - name: install  dependencies
     package:
       name:
@@ -24,7 +35,7 @@
 
   - name: create wordpress dir
     file:
-      path: "/var/www/html/{{ beckinc.org }}"
+      path: "/var/www/html/{{ domain }}"
       state: directory
       owner: apache
       group: apache
@@ -33,7 +44,7 @@
   - name: get wordpress
     unarchive:
       src: https://wordpress.org/latest.tar.gz
-      dest: /var/www/html/{{ beckinc.org }}
+      dest: /var/www/html/{{ domain }}
       extra_opts: --strip=1
       remote_src: yes
       owner: apache
@@ -48,7 +59,7 @@
 
   - name: create database
     mysql_db:
-      name: "wp_{{ beckinc.org }}_db"
+      name: "wp_{{ domain }}_db"
       state: present
 
   - name: create database user
