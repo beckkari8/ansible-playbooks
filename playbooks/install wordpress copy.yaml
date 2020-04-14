@@ -1,5 +1,11 @@
 ---
 # tasks file for wordpress
+
+name: install wordpress
+hosts: all
+become: true
+become_method: sudo
+user: centos
 - name: install dependencies
   package:
     name:
@@ -7,13 +13,8 @@
       - mariadb 
       - mariadb-server 
       - php 
-      - php-pdo_mysql 
-      - php-xml 
-      - php-gd 
+      - php-server
       - wget 
-      - nano
-      - policycoreutils-python
-      - MySQL-python
     state: installed
 
 - name: create wordpress dir
@@ -40,58 +41,9 @@
     state: started
     enabled: true
 
-- name: create database
-  mysql_db:
-    name: "wp_{{ beckinc.org }}_db"
-    state: present
-
-- name: create database user
-  mysql_user:
-    name: "{{ beck }}"
-    password: "{{ b200189k }}"
-    priv: '{{ wordpress }}.*:ALL,GRANT'
-  notify: secure mariadb
-
-- name: run API handler now
-  meta: flush_handlers
-
-- name: set mariadb root password
-  mysql_user:
-    name: root
-    password: "{{ b200189k }}"
-
-- name: copy template
-  template:
-    src: wp-config.j2
-    dest: /var/www/html/{{ domain }}/wp-config.php
-
-- name: copy httpd template
-  template:
-    src: httpd.j2
-    dest: /etc/httpd/conf/httpd.conf
-    owner: root
-    group: root
-    mode: 0644
 
 - name: start httpd
   service:
     name: httpd
     state: started
     enabled: true
-
-- name: ensure firewalld is running
-  service:
-    name: firewalld
-    state: started
-    enabled: true
-
-- name: open firewall services
-  firewalld:
-    service: "{{ item }}"
-    permanent: true
-    state: enabled
-    immediate: true
-  with_items:
-    - https
-    - http
-handlers/main.yml:
