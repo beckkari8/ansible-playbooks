@@ -39,7 +39,7 @@
     - name: Download wordpress
       get_url:
         url: https://wordpress.org/latest.tar.gz 
-        dest: /home/centos/
+        dest: /tmp/
 
     - name: add users
       user: 
@@ -53,7 +53,7 @@
 
     - name: Unzip wordpress
       unarchive: 
-        src: /home/centos/wordpress-5.4.tar.gz
+        src: /tmp/wordpress-5.4.tar.gz
         dest: /var/www/html/
         remote_src: yes 
 
