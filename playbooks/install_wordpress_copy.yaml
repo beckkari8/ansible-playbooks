@@ -54,15 +54,7 @@
   #     group: apache
   #     mode: 0755
 
-  - name: get wordpress
-    unarchive:
-      src: https://wordpress.org/latest.tar.gz
-      dest: /var/www/html/{{ domain }}
-      extra_opts: --strip=1
-      remote_src: yes
-      owner: apache
-      group: apache
-  #  notify: get API information
+
 
   - name: start mariadb
     service:
@@ -76,3 +68,13 @@
       name: httpd
       state: started
       enabled: true
+
+  - name: get wordpress
+    unarchive:
+      src: https://wordpress.org/latest.tar.gz
+      dest: /var/www/html/{{ domain }}
+      extra_opts: --strip=1
+      remote_src: yes
+      owner: apache
+      group: apache
+  #  notify: get API information
