@@ -3,15 +3,17 @@
   become: true
   become_method: sudo
   user: centos 
-  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
+  
   tasks: 
   - name: Create repo
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     copy: 
       src: r1soft.repo
       dest: /etc/yum.repod.d/
   
   
   - name: install agent
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     package: 
       name: serverbackup-enterprise-agent
       state: installed
@@ -19,12 +21,14 @@
 
 
   - name: stop iptables
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     service:
       name: iptables
       state: stopped
       enabled: false     
 
   - name: Get key
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     shell: "r1soft-setup --get-key http://backup.beckinc.org/"
 
 
