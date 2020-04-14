@@ -6,17 +6,26 @@
   become: true
   become_method: sudo
   user: centos
-  vars:
-    users:
-    - "bob"
-    - "ben"
-    - "lisa"
-    - "katty"
   tasks:
-  - name: creating users
+  - name: add bob
     user:
-      name: "{{ item }}"
-      state: present 
+      name: bob
+      state: present
+
+  - name: add ben
+    user:
+      name: ben
+      state: present
+
+  - name: add lisa
+    user:
+      name: lisa
+      state: present
+
+  - name: add katty
+    user:
+      name: katty
+      state: present               
 
 
   - name: install dependencies
