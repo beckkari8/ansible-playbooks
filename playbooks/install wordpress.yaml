@@ -1,7 +1,7 @@
 ---
 - name: Install wordpress on CentOS 7 
   gather_facts: no 
-  hosts: all       
+  hosts: 54.149.227.242     
   tasks: 
     - name: Install httpd
       package: 
