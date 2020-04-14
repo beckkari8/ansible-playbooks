@@ -39,8 +39,8 @@
       - wget 
     state: installed
 
-- name: create wordpress dir
-  shell: "wget https://wordpress.org/latest.tar.gz /var/www/html"     
+# - name: create wordpress dir
+#   shell: "wget https://wordpress.org/latest.tar.gz /var/www/html"     
 
 # - name: create wordpress dir
 #   shell:
