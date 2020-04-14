@@ -6,6 +6,20 @@
   become_method: sudo
   user: centos  
   tasks: 
+    - name:
+      shell: "yum -y install epel-release"
+
+    - name: 
+      shell: "yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y"  
+
+    - name:
+      shell: "yum-config-manager --enable remi-php72"
+
+    - name:
+      shell: "yum update -y"   
+
+
+
     - name: Install httpd
       package: 
         name: "{{ item }}"
@@ -26,7 +40,7 @@
       get_url:
         url: https://wordpress.org/latest.tar.gz 
         dest: /home/centos/
-        
+
     - name: add users
       user: 
         name: "{{ item }}"
@@ -39,7 +53,7 @@
 
     - name: Unzip wordpress
       unarchive: 
-        src: ~/latest.tar.gz
+        src: ~/wordpress-5.4.tar.gz
         dest: /var/www/html/
         remote_src: yes 
 
