@@ -3,10 +3,10 @@
   gather_facts: false
   tasks:
     - route53:
-      command: create
-      zone: beckinc.org
-      record: beckinc.org
-      type: A
-      ttl: 60
-      value: 35.163.121.52
-      wait: yes
+        command: create
+        zone: beckinc.org
+        record: beckinc.org
+        type: A
+        ttl: 60
+        value: 35.163.121.52
+        wait: yes
