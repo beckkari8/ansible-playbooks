@@ -12,7 +12,6 @@
     - "ben"
     - "lisa"
     - "katty"
-
   tasks:
   - name: creating users
     user:
