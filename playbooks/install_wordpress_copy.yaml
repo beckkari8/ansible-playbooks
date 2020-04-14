@@ -40,7 +40,7 @@
       state: installed
 
   # - name: create wordpress dir
-  #   shell: 
+  #   shell:
   #   - "wget https://wordpress.org/latest.tar.gz /var/www/html"
   #   - " tar -xf latest.tar.gz"
   #   - "cp wordpress/* /var/www/html/"
@@ -57,7 +57,7 @@
   - name: get wordpress
     unarchive:
       src: https://wordpress.org/latest.tar.gz
-      dest: /var/www/html/{{ beckinc.org }}
+      dest: /var/www/html/{{ domain }}
       extra_opts: --strip=1
       remote_src: yes
       owner: apache
