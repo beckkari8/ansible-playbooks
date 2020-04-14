@@ -1,6 +1,6 @@
 ---
 - name: Install wordpress on CentOS 7 
-  gather_facts: no 
+  # gather_facts: no 
   hosts: 54.149.227.242   
   become: true
   become_method: sudo
@@ -20,6 +20,13 @@
         - php-gd 
       ignore_errors: yes 
 
+    
+
+    - name: Download wordpress
+      get_url:
+        url: https://wordpress.org/latest.tar.gz 
+        dest: /home/centos/
+        
     - name: add users
       user: 
         name: "{{ item }}"
@@ -28,12 +35,7 @@
         - bob
         - ben
         - lisa
-        - katty
-
-    - name: Download wordpress
-      get_url:
-        url: https://wordpress.org/latest.tar.gz 
-        dest: /home/centos/
+        - katty      
 
     - name: Unzip wordpress
       unarchive: 
