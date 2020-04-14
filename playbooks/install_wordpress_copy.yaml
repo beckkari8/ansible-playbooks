@@ -39,13 +39,13 @@
         - wget 
       state: installed
 
-  - name: create wordpress dir
-    shell: 
-    - "wget https://wordpress.org/latest.tar.gz /var/www/html"
-    - " tar -xf latest.tar.gz"
-    - "cp wordpress/* /var/www/html/"
-    - "chown apache:apache -R /var/www/html"
-    - "chmod 0755 /var/www/html"
+  # - name: create wordpress dir
+  #   shell: 
+  #   - "wget https://wordpress.org/latest.tar.gz /var/www/html"
+  #   - " tar -xf latest.tar.gz"
+  #   - "cp wordpress/* /var/www/html/"
+  #   - "chown apache:apache -R /var/www/html"
+  #   - "chmod 0755 /var/www/html"
   # - name: create wordpress dir
   #   file:
   #     path: "/var/www/html/{{ beckinc.org }}"
@@ -54,15 +54,15 @@
   #     group: apache
   #     mode: 0755
 
-  # - name: get wordpress
-  #   unarchive:
-  #     src: https://wordpress.org/latest.tar.gz
-  #     dest: /var/www/html/{{ beckinc.org }}
-  #     extra_opts: --strip=1
-  #     remote_src: yes
-  #     owner: apache
-  #     group: apache
-  #   notify: get API information
+  - name: get wordpress
+    unarchive:
+      src: https://wordpress.org/latest.tar.gz
+      dest: /var/www/html/{{ beckinc.org }}
+      extra_opts: --strip=1
+      remote_src: yes
+      owner: apache
+      group: apache
+  #  notify: get API information
 
   - name: start mariadb
     service:
