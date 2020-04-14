@@ -35,7 +35,7 @@
         - mariadb 
         - mariadb-server 
         - php 
-        - php-server
+        - php-mysql
         - wget 
       state: installed
 
