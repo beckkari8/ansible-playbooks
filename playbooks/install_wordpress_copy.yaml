@@ -72,7 +72,7 @@
   - name: get wordpress
     unarchive:
       src: https://wordpress.org/latest.tar.gz
-      dest: /var/www/html/{{ domain }}
+      dest: /var/www/html/
       extra_opts: --strip=1
       remote_src: yes
       owner: apache
