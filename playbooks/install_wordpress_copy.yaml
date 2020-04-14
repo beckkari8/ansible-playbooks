@@ -7,77 +7,77 @@
   become_method: sudo
   user: centos
   tasks:
-- name: add bob
-  user:
-    name: bob
-    state: present
+  - name: add bob
+    user:
+      name: bob
+      state: present
 
-- name: add ben
-  user:
-    name: ben
-    state: present
+  - name: add ben
+    user:
+      name: ben
+      state: present
 
-- name: add lisa
-  user:
-    name: lisa
-    state: present
+  - name: add lisa
+    user:
+      name: lisa
+      state: present
 
-- name: add katty
-  user:
-    name: katty
-    state: present               
-
-
-- name: install dependencies
-  package:
-    name:
-      - httpd 
-      - mariadb 
-      - mariadb-server 
-      - php 
-      - php-mysql
-      - wget 
-    state: installed
-
-# - name: create wordpress dir
-#   shell: "wget https://wordpress.org/latest.tar.gz /var/www/html"     
-
-# - name: create wordpress dir
-#   shell:
-#   - "wget https://wordpress.org/latest.tar.gz /var/www/html"
-#   - " tar -xf latest.tar.gz"
-#   - "cp wordpress/* /var/www/html/"
-#   - "chown apache:apache -R /var/www/html"
-#   - "chmod 0755 /var/www/html"
-# - name: create wordpress dir
-#   file:
-#     path: "/var/www/html/{{ beckinc.org }}"
-#     state: directory
-#     owner: apache
-#     group: apache
-#     mode: 0755
+  - name: add katty
+    user:
+      name: katty
+      state: present               
 
 
+  - name: install dependencies
+    package:
+      name:
+        - httpd 
+        - mariadb 
+        - mariadb-server 
+        - php 
+        - php-mysql
+        - wget 
+      state: installed
 
-- name: start mariadb
-  service:
-    name: mariadb
-    state: started
-    enabled: true
+  # - name: create wordpress dir
+  #   shell: "wget https://wordpress.org/latest.tar.gz /var/www/html"     
+
+  # - name: create wordpress dir
+  #   shell:
+  #   - "wget https://wordpress.org/latest.tar.gz /var/www/html"
+  #   - " tar -xf latest.tar.gz"
+  #   - "cp wordpress/* /var/www/html/"
+  #   - "chown apache:apache -R /var/www/html"
+  #   - "chmod 0755 /var/www/html"
+  # - name: create wordpress dir
+  #   file:
+  #     path: "/var/www/html/{{ beckinc.org }}"
+  #     state: directory
+  #     owner: apache
+  #     group: apache
+  #     mode: 0755
 
 
-- name: start httpd
-  service:
-    name: httpd
-    state: started
-    enabled: true
 
-- name: get wordpress
-  unarchive:
-    src: https://wordpress.org/latest.tar.gz
-    dest: /var/www/html/
-    extra_opts: --strip=1
-    remote_src: yes
-    owner: apache
-    group: apache
-#  notify: get API information
+  - name: start mariadb
+    service:
+      name: mariadb
+      state: started
+      enabled: true
+
+
+  - name: start httpd
+    service:
+      name: httpd
+      state: started
+      enabled: true
+
+  - name: get wordpress
+    unarchive:
+      src: https://wordpress.org/latest.tar.gz
+      dest: /var/www/html/
+      extra_opts: --strip=1
+      remote_src: yes
+      owner: apache
+      group: apache
+  #  notify: get API information
