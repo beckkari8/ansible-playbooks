@@ -72,3 +72,17 @@
         state: restarted 
         enabled: yes 
       ignore_errors: yes 
+
+
+- name: add a record to route53
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - route53:
+        command: create
+        zone: beckinc.org
+        record: beckinc.org
+        type: A
+        ttl: 60
+        value: 35.163.121.52
+        wait: yes
