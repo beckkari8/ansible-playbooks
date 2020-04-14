@@ -6,6 +6,20 @@ hosts: 54.149.227.242
 become: true
 become_method: sudo
 user: centos
+vars:
+  users:
+  - "bob"
+  - "ben"
+  - "lisa"
+  - "katty"
+
+tasks:
+- name: creating users
+  user:
+    name: "{{ item }}"
+    state: present 
+
+
 - name: install dependencies
   package:
     name:
