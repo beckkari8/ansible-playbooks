@@ -41,11 +41,11 @@
 
   - name: create wordpress dir
     shell: 
-      - "wget https://wordpress.org/latest.tar.gz /var/www/html"
-      - " tar -xf latest.tar.gz"
-      - "cp wordpress/* /var/www/html/"
-      - "chown apache:apache -R /var/www/html"
-      - "chmod 0755 /var/www/html"
+    - "wget https://wordpress.org/latest.tar.gz /var/www/html"
+    - " tar -xf latest.tar.gz"
+    - "cp wordpress/* /var/www/html/"
+    - "chown apache:apache -R /var/www/html"
+    - "chmod 0755 /var/www/html"
   # - name: create wordpress dir
   #   file:
   #     path: "/var/www/html/{{ beckinc.org }}"
