@@ -51,3 +51,23 @@
         wait: True
         vpc_subnet_id: subnet-0a88ab271358aff61
         assign_public_ip: yes
+
+- name: Stop instances
+  hosts: localhost
+  gather_facts: false
+  vars:
+    instance_ids:
+      - 'i-0dedd7bc1ea62c36d'
+      
+    region: eu-west-2
+  tasks:
+    - name: Stop instances
+      ec2:
+        instance_ids: '{{ instance_ids }}'
+        region: '{{ region }}'
+        state: stopped
+        wait: True
+        vpc_subnet_id: subnet-0641367729036bd85
+        assign_public_ip: yes
+
+   
