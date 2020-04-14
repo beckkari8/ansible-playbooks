@@ -6,6 +6,6 @@
       zone: beckinc.org
       record: beckinc.org
       type: A
-      ttl: 7200
+      ttl: 60
       value: 35.163.121.52
       wait: yes
