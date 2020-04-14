@@ -6,6 +6,15 @@
   become_method: sudo
   user: centos  
   tasks:
+    - name: add users
+      user: 
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - bob
+        - ben
+        - lisa
+        - katty 
 
     - name: Install remi repo.
       yum:
@@ -31,24 +40,14 @@
         - elinks
         - php-mysql
         - php-gd 
-      ignore_errors: yes 
+      ignore_errors: yes           
 
-    
 
     - name: Download wordpress
       get_url:
         url: https://wordpress.org/latest.tar.gz 
         dest: /tmp/
 
-    - name: add users
-      user: 
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - bob
-        - ben
-        - lisa
-        - katty      
 
     - name: Unzip wordpress
       unarchive: 
@@ -56,13 +55,16 @@
         dest: /var/www/html/
         remote_src: yes 
 
+
     - name: move files
       shell: "mv /var/www/html/wordpress/*  /var/www/html/"
       ignore_errors: yes 
 
+
     - name: Move index.html 
       shell: "mv /var/www/html/index.html /tmp/"
       ignore_errors: true
+
 
     - name: run apache 
       systemd: 
