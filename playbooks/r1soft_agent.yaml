@@ -1,0 +1,37 @@
+- name: R1soft agent installation
+  hosts: all
+  become: true
+  become_method: sudo
+  user: centos 
+  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
+  tasks: 
+  - name: Create repo
+    copy: 
+      src: r1soft.repo
+      dest: /etc/yum.repod.d/
+  
+  
+  - name: install agent
+    package: 
+      name: serverbackup-enterprise-agent
+      state: installed
+    notify: AGENT_RESTART
+
+
+  - name: stop iptables
+    service:
+      name: iptables
+      state: stopped
+      enabled: false     
+
+  - name: Get key
+    shell: "r1soft-setup --get-key http://backup.beckinc.org/"
+
+
+
+  handlers:
+    name: AGENT_RESTART
+    service: 
+      name: cdp-agent
+      state: restarted
+      enables: yes
