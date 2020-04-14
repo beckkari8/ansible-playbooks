@@ -1,63 +1,63 @@
 ---
 # tasks file for wordpress
 
-name: install wordpress
-hosts: 54.149.227.242
-become: true
-become_method: sudo
-user: centos
-vars:
-  users:
-  - "bob"
-  - "ben"
-  - "lisa"
-  - "katty"
+- name: Install Wordpress
+  hosts: 54.149.227.242
+  become: true
+  become_method: sudo
+  user: centos
+  vars:
+    users:
+    - "bob"
+    - "ben"
+    - "lisa"
+    - "katty"
 
-tasks:
-- name: creating users
-  user:
-    name: "{{ item }}"
-    state: present 
-
-
-- name: install dependencies
-  package:
-    name:
-      - httpd 
-      - mariadb 
-      - mariadb-server 
-      - php 
-      - php-server
-      - wget 
-    state: installed
-
-- name: create wordpress dir
-  file:
-    path: "/var/www/html/{{ beckinc.org }}"
-    state: directory
-    owner: apache
-    group: apache
-    mode: 0755
-
-- name: get wordpress
-  unarchive:
-    src: https://wordpress.org/latest.tar.gz
-    dest: /var/www/html/{{ beckinc.org }}
-    extra_opts: --strip=1
-    remote_src: yes
-    owner: apache
-    group: apache
-  notify: get API information
-
-- name: start mariadb
-  service:
-    name: mariadb
-    state: started
-    enabled: true
+  tasks:
+  - name: creating users
+    user:
+      name: "{{ item }}"
+      state: present 
 
 
-- name: start httpd
-  service:
-    name: httpd
-    state: started
-    enabled: true
+  - name: install dependencies
+    package:
+      name:
+        - httpd 
+        - mariadb 
+        - mariadb-server 
+        - php 
+        - php-server
+        - wget 
+      state: installed
+
+  - name: create wordpress dir
+    file:
+      path: "/var/www/html/{{ beckinc.org }}"
+      state: directory
+      owner: apache
+      group: apache
+      mode: 0755
+
+  - name: get wordpress
+    unarchive:
+      src: https://wordpress.org/latest.tar.gz
+      dest: /var/www/html/{{ beckinc.org }}
+      extra_opts: --strip=1
+      remote_src: yes
+      owner: apache
+      group: apache
+    notify: get API information
+
+  - name: start mariadb
+    service:
+      name: mariadb
+      state: started
+      enabled: true
+
+
+  - name: start httpd
+    service:
+      name: httpd
+      state: started
+      enabled: true
