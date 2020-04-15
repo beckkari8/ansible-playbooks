@@ -15,6 +15,7 @@
         wait: True
         vpc_subnet_id: subnet-053fbc7822d68f7b5
         assign_public_ip: yes
+      ignore_errors: yes   
 
 - name: Stop instances
   hosts: localhost
@@ -33,6 +34,7 @@
         wait: True
         vpc_subnet_id: subnet-051fe9935ce2da711
         assign_public_ip: yes
+      ignore_errors: yes   
 
 - name: Stop instances
   hosts: localhost
@@ -51,6 +53,7 @@
         wait: True
         vpc_subnet_id: subnet-0a88ab271358aff61
         assign_public_ip: yes
+      ignore_errors: yes   
 
 - name: Stop instances
   hosts: localhost
@@ -69,5 +72,6 @@
         wait: True
         vpc_subnet_id: subnet-0641367729036bd85
         assign_public_ip: yes
+      ignore_errors: yes   
 
    
