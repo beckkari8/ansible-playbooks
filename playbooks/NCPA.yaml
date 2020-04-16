@@ -4,6 +4,7 @@
   become: true
   become_method: sudo
   user: centos
+  ignore_errors: true
   tasks:
   - name: Setup a repo
     shell: rpm -Uvh http://repo.nagios.com/nagios/7/nagios-repo-7-4.el7.noarch.rpm
